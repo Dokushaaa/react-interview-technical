@@ -1,0 +1,34 @@
+RewriteEngine On
+# use for authentication
+RewriteCond %{HTTP:Authorization} ^(.+)$
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+Header set Access-Control-Allow-Origin *
+
+#################################### ALL FOR DEVELOPER #################################
+
+### SETTING ROLES ###
+# for users table
+RewriteRule ^users$ controllers/users/users.php [L]
+RewriteRule ^users/([0-9]+)$ controllers/users/users.php?usersid=$1 [L]
+RewriteRule ^users/active/([0-9]+)$ controllers/users/active.php?usersid=$1 [L]
+RewriteRule ^users/search$ controllers/users/search.php [L]
+RewriteRule ^upload/photo$ core/upload-photo.php [L]
+
+
+# { for auth table
+# basic auth table exec
+RewriteRule ^auth$ controllers/auth/auth.php [L]
+RewriteRule ^auth/([0-9]+)$ controllers/auth/auth.php?authid=$1 [L]
+RewriteRule ^auth/active/([0-9]+)$ controllers/auth/active.php?authid=$1 [L]
+RewriteRule ^auth/search$ controllers/auth/search.php [L]
+# for password management
+RewriteRule ^auth/password$ controllers/auth/set-password.php [L]
+RewriteRule ^auth/reset$ controllers/auth/reset-password.php [L]
+# for login
+RewriteRule ^auth/login$ controllers/auth/login.php [L]
+RewriteRule ^auth/token$ controllers/auth/token.php [L]
+# }
+

@@ -1,0 +1,13 @@
+CREATE TABLE `react-interview`.`tbl_users` (`user_aid` INT NOT NULL AUTO_INCREMENT ,
+`user_workid` INT NOT NULL , `user_fname` TEXT NOT NULL ,`user_mname` TEXT NOT NULL ,`user_sname` TEXT NOT NULL , `user_email` TEXT NOT NULL , `user_manager` TEXT NOT NULL , `user_is_active` BOOLEAN NOT NULL , PRIMARY KEY (`user_aid`)) ENGINE = InnoDB; 
+
+
+INSERT INTO `tbl_users` (`user_aid`, `user_workid`, `user_fname`, `user_mname`, `user_sname`, `user_email`, `user_manager`, `user_is_active`) VALUES
+(1, 101, 'Arris-Jeff', 'Supnet', 'Saavedra', 'SaavedraArrisss@gmail.com', 'JJ', 1);
+
+
+ALTER TABLE `tbl_users` ADD `users_datetime` VARCHAR(255) NOT NULL AFTER `users_is_active`, ADD `users_created` VARCHAR(255) NOT NULL AFTER `users_datetime`;
+
+
+INSERT INTO `tbl_users` (`users_aid`, `users_workid`, `users_fname`, `users_mname`, `users_sname`, `users_email`, `users_manager`, `users_is_active`, `users_datetime`, `users_created`) VALUES
+(1, 101, 'Arris-Jeff', 'Supnet', 'Saavedra', 'SaavedraArrisss@gmail.com', 'Idunnno', 1, '2024-06-25 14:39:07', '2024-06-25 13:58:33');
